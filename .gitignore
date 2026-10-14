@@ -1,0 +1,19 @@
+# Inputs
+/input/
+/data/raw/
+
+# Intermediate datasets
+/data/derived/
+
+# Temporary files
+/temp/
+
+# Logs
+*.log
+
+# RO-Crate tooling
+.rockit/
+ro-crate-*
+
+# OS
+.DS_Store
