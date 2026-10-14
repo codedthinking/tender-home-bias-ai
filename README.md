@@ -80,8 +80,7 @@ statement.
   "Distributions" list and select **"TED - Contract award notices 2023"**
   (a ZIP archive), or download the archive directly from
   https://data.europa.eu/api/hub/store/data/ted-contract-award-notices-2023.zip.
-  Save the archive to `data/raw/ted/`. A copy of the archive is provided as part of
-  this replication package.
+  Save the archive to `data/raw/ted/`.
 - Data dictionary: the official codebook is the *TED CSV open data -- Notes &
   Codebook*, version 3.5 (2022-11-17), by DG GROW, available at
   https://data.europa.eu/data-management/store/api/legacy/data/ted-csv-data-information-v3-5.pdf.
@@ -118,21 +117,22 @@ statement.
   2024. Replicators should record the download date of their archive and confirm
   whether the file they obtained includes eForms notices, because a 2023 file
   downloaded after the republication can differ from the file used here.
-- Datafile: `data/raw/ted/ted-contract-award-notices-2023.zip` -- Provided.
+- Datafile: `data/raw/ted/ted-contract-award-notices-2023.zip` -- Not
+  redistributed here; downloaded by `programs/01_dataprep/download.do`.
 
 ## Dataset List
 
 | Data file | Source | Notes | Provided |
 | --- | --- | --- | --- |
-| `data/raw/ted/ted-contract-award-notices-2023.zip` | TED CSV subset (DG GROW) | Raw contract award notices for 2023 (106 MB zip). Redistributable under the EC reuse notice. | Yes |
-| `data/raw/ted/export_CAN_2023.csv` | TED CSV subset (DG GROW) | The CSV uncompressed from the archive by `01_dataprep` (680 MB, 1,098,451 observations, 75 variables). | Yes |
-| `data/derived/ted_can_2023.dta` | All listed | Cleaned and compressed analysis file (1,098,451 observations, 75 variables); source for the fact table that feeds the exhibits. | Yes |
-| `data/derived/ted_can_2023_analysis.dta` | All listed | Convenience extract of the four core variables, renamed: `buyer_country`, `seller_country`, `cpv_code`, `contract_value_eur` (1,098,451 observations, 4 variables). Not read by the current exhibits, which use the fact table. | Yes |
-| `data/derived/fact_country_pair_cpv.dta` | All listed | Fact table at the buyer-country x seller-country x two-digit-CPV grain: `n_lots`, `n_sellers`, `total_value_eur` (5,209 observations, 6 variables). | Yes |
+| `data/raw/ted/ted-contract-award-notices-2023.zip` | TED CSV subset (DG GROW) | Raw contract award notices for 2023 (106 MB zip). Redistributable under the EC reuse notice. | No |
+| `data/raw/ted/export_CAN_2023.csv` | TED CSV subset (DG GROW) | The CSV uncompressed from the archive by `01_dataprep` (680 MB, 1,098,451 observations, 75 variables). | No |
+| `data/derived/ted_can_2023.dta` | All listed | Cleaned and compressed analysis file (1,098,451 observations, 75 variables); source for the fact table that feeds the exhibits. | No |
+| `data/derived/ted_can_2023_analysis.dta` | All listed | Convenience extract of the four core variables, renamed: `buyer_country`, `seller_country`, `cpv_code`, `contract_value_eur` (1,098,451 observations, 4 variables). Not read by the current exhibits, which use the fact table. | No |
+| `data/derived/fact_country_pair_cpv.dta` | All listed | Fact table at the buyer-country x seller-country x two-digit-CPV grain: `n_lots`, `n_sellers`, `total_value_eur` (5,209 observations, 6 variables). | No |
 
-Note: the raw archive is stored under `data/raw/ted/` as downloaded and is never
-edited; all processing happens in code and produces the files under
-`data/derived/`.
+Note: the datasets are not redistributed in this repository. The raw archive is
+stored under `data/raw/ted/` as downloaded and is never edited; all processing
+happens in code and produces the files under `data/derived/`.
 
 ## Dimensional Model
 
@@ -233,9 +233,7 @@ see the data license statement above.
    structure and install the required Stata packages.
 3. Download the data archive as described under "Details on each Data Source"
    above and save it to `data/raw/` in the form in which it is downloaded. Do not
-   unpack it by hand; `01_dataprep` unpacks the archive into `data/raw/`. A copy
-   of the archive is already provided in the package, so this step can be
-   skipped when the provided copy is used.
+   unpack it by hand; `01_dataprep` unpacks the archive into `data/raw/`.
 4. Run `programs/01_dataprep/main.do` to build the analysis files from the raw
    data.
 5. Run `programs/02_analysis/main.do` to produce all tables and figures.
