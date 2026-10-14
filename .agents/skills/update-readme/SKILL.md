@@ -1,6 +1,6 @@
 ---
 name: update-readme
-description: Keep the project's replication README.md in sync with the codebase — updates data file manifests, installed package versions, computational requirements, and the table/figure program-to-output mapping. Use whenever new datasets, packages, analysis scripts, tables, or figures are added or modified.
+description: Keep the project's replication README.md in sync with the codebase — updates data file manifests, installed package versions, computational requirements, and the table/figure program-to-output mapping, and removes any claim that no longer matches what ships. Use whenever new datasets, packages, analysis scripts, tables, or figures are added or modified.
 ---
 
 # Updating Replication README
@@ -39,3 +39,14 @@ Maintain the **List of Tables and Programs** mapping table:
 - **Line Number**: Line number where the exhibit is exported (if the script produces multiple exhibits).
 - **Output file**: Exact filename written to `output/` (e.g. `table1.tex`, `figure2.png`).
 - **Note**: Mark `n.a. (no data)` for conceptual diagrams without underlying data.
+
+### 5. Statements must match the artifact
+
+- The **Provided** column must reflect what actually ships in the repository or
+  package, not what could be obtained. If a dataset is gitignored, mark it `No`
+  and point to the download instructions.
+- Do not reference programs, directories, or files that do not exist (e.g. a
+  `programs/03_appendix/` never created, a `programs/ado/` with no ado files, or a
+  bundled data archive that is not included).
+- When unsure whether a claim is still true, remove it. No information is better
+  than incorrect information.
